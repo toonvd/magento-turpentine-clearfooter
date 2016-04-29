@@ -21,6 +21,14 @@
                     </byte_clearfooter_page_edit_tab_content>
                 </observers>
             </adminhtml_block_html_before>
+            <model_save_before>
+                <observers>
+                    <byte_clearfooter_model_save_before>
+                    <class>byte_clearfooter/observer</class>
+                    <method>modelSaveBefore</method>
+                    </byte_clearfooter_model_save_before>
+                </observers>
+            </model_save_before>
         </events>
         <resources>
             <byte_clearfooter_setup>

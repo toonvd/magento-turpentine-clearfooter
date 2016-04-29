@@ -23,4 +23,35 @@ class Byte_Clearfooter_Model_Observer
             $block->setForm($form);
         }
     }
+
+    public function modelSaveBefore($observer){
+        $object = $observer->getEvent()->getObject();
+        if($observer->getEvent()->getObject() instanceof Mage_Cms_Model_Block && (bool)$object->getIsFooterBlock()){
+            $this->banByHeader('obj.http.X-Turpentine-Block', 'footer');
+        }
+    }
+
+    /**
+     * @param $header
+     * @param $contents
+     * @return $this
+     */
+    protected function banByHeader($header, $contents)
+    {
+        $errors = '';
+        foreach (Mage::helper('turpentine/varnish')->getSockets() as $socket) {
+            $socketName = $socket->getConnectionString();
+            try {
+                $socket->ban($header, '~', $contents);
+            } catch (Mage_Core_Exception $e) {
+                $errors .= 'Error for socketName: ' . $socketName . ' ' . $e->getMessage() . PHP_EOL;
+                continue;
+            }
+        }
+        if ($errors != '') {
+            Mage::getSingleton('adminhtml/session')->addError($errors);
+        }
+
+        return $this;
+    }
 }
