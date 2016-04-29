@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Byte_Clearfooter>
+            <active>true</active>
+            <codePool>community</codePool>
+            <depends>
+                <Nexcessnet_Turpentine />
+            </depends>
+        </Byte_Clearfooter>
+    </modules>
+</config>

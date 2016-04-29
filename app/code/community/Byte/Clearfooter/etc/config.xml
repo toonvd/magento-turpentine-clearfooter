@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Byte_Clearfooter>
+            <version>0.0.1</version>
+        </Byte_Clearfooter>
+    </modules>
+    <global>
+        <models>
+            <byte_clearfooter>
+                <class>Byte_Clearfooter_Model</class>
+            </byte_clearfooter>
+        </models>
+        <events>
+            <adminhtml_cms_block_edit_tab_content_prepare_form>
+                <observers>
+                    <byte_clearfooter_page_edit_tab_content>
+                        <type>singleton</type>
+                        <class>byte_clearfooter/observer</class>
+                        <method>addIsFooterBlockFLag</method>
+                    </byte_clearfooter_page_edit_tab_content>
+                </observers>
+            </adminhtml_cms_block_edit_tab_content_prepare_form>
+        </events>
+        <resources>
+            <byte_clearfooter_setup>
+                <setup>
+                    <module>Byte_Clearfooter</module>
+                    <class>Mage_Core_Model_Resource_Setup</class>
+                </setup>
+            </byte_clearfooter_setup>
+        </resources>
+    </global>
+</config>
