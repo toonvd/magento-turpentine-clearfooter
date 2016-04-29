@@ -12,7 +12,7 @@
             </byte_clearfooter>
         </models>
         <events>
-            <adminhtml_cms_block_edit_tab_content_prepare_form>
+            <adminhtml_block_html_before>
                 <observers>
                     <byte_clearfooter_page_edit_tab_content>
                         <type>singleton</type>
@@ -20,7 +20,7 @@
                         <method>addIsFooterBlockFLag</method>
                     </byte_clearfooter_page_edit_tab_content>
                 </observers>
-            </adminhtml_cms_block_edit_tab_content_prepare_form>
+            </adminhtml_block_html_before>
         </events>
         <resources>
             <byte_clearfooter_setup>

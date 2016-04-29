@@ -7,13 +7,15 @@ $installer->startSetup();
 $conn = $installer->getConnection();
 $table = $installer->getTable('cms_block');
 
-$table->addColumn(
+$installer->getConnection()
+    ->addColumn(
+        $table,
     'is_footer_block',
-    Varien_Db_Ddl_Table::TYPE_BOOLEAN,
     array(
-        'nullable' => false
-    ),
-    'Is Footer'
+        'nullable' => false,
+        'type' => Varien_Db_Ddl_Table::TYPE_BOOLEAN,
+        'comment' => 'Is Footer'
+    )
 );
 
 $installer->endSetup();
